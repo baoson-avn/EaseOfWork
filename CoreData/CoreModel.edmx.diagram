@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="77a73a24fdd240f39ac864200f2eee06" Name="Diagram1" ZoomLevel="94" >
+        <EntityTypeShape EntityType="CoreModel.Staff" Width="1.875" PointX="3.625" PointY="1.125" />
+        <EntityTypeShape EntityType="CoreModel.Department" Width="2.125" PointX="0.75" PointY="13.625" />
+        <AssociationConnector Association="CoreModel.DepartmentStaff" />
+        <EntityTypeShape EntityType="CoreModel.JobTitle" Width="2.125" PointX="0.75" PointY="2.875" />
+        <AssociationConnector Association="CoreModel.JobTitle_Staff" />
+        <AssociationConnector Association="CoreModel.Staff_CreatedByStaff" />
+        <AssociationConnector Association="CoreModel.StaffStaff" />
+        <AssociationConnector Association="CoreModel.DepartmentStaff1" />
+        <AssociationConnector Association="CoreModel.JobTitleStaff" />
+        <AssociationConnector Association="CoreModel.DepartmentStaff2" />
+        <AssociationConnector Association="CoreModel.JobTitleStaff1" />
+        <EntityTypeShape EntityType="CoreModel.Avatar" Width="2" PointX="0.875" PointY="7.625" />
+        <AssociationConnector Association="CoreModel.AvatarStaff" />
+        <EntityTypeShape EntityType="CoreModel.Permission" Width="2" PointX="0.875" PointY="10.5" />
+        <AssociationConnector Association="CoreModel.PermissionStaff" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

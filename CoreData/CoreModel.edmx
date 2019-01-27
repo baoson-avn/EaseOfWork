@@ -1,0 +1,686 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CoreModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="CoreModelStoreContainer">
+    <EntitySet Name="Staffs" EntityType="CoreModel.Store.Staffs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Departments" EntityType="CoreModel.Store.Departments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="JobTitles" EntityType="CoreModel.Store.JobTitles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Avatars" EntityType="CoreModel.Store.Avatars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Permissions" EntityType="CoreModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DepartmentStaff" Association="CoreModel.Store.DepartmentStaff">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="JobTitle_Staff" Association="CoreModel.Store.JobTitle_Staff">
+      <End Role="JobTitle" EntitySet="JobTitles" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="Staff_CreatedByStaff" Association="CoreModel.Store.Staff_CreatedByStaff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Staff1" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="StaffStaff" Association="CoreModel.Store.StaffStaff">
+      <End Role="Staff" EntitySet="Staffs" />
+      <End Role="Staff1" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentStaff1" Association="CoreModel.Store.DepartmentStaff1">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="JobTitleStaff" Association="CoreModel.Store.JobTitleStaff">
+      <End Role="JobTitle" EntitySet="JobTitles" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="DepartmentStaff2" Association="CoreModel.Store.DepartmentStaff2">
+      <End Role="Department" EntitySet="Departments" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="JobTitleStaff1" Association="CoreModel.Store.JobTitleStaff1">
+      <End Role="JobTitle" EntitySet="JobTitles" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="AvatarStaff" Association="CoreModel.Store.AvatarStaff">
+      <End Role="Avatar" EntitySet="Avatars" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+    <AssociationSet Name="PermissionStaff" Association="CoreModel.Store.PermissionStaff">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="Staff" EntitySet="Staffs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Staffs">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OfficePhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CellPhone" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="int" Nullable="false" />
+    <Property Name="DepartmentGuid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="JobTitleId" Type="int" Nullable="false" />
+    <Property Name="JobTitleGuid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LastLogin" Type="datetime" Nullable="true" />
+    <Property Name="LastActive" Type="datetime" Nullable="true" />
+    <Property Name="CreatedByStaffId" Type="int" Nullable="true" />
+    <Property Name="CreatedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="ModifiedByStaffId" Type="int" Nullable="true" />
+    <Property Name="ModifiedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="AvatarId" Type="int" Nullable="false" />
+    <Property Name="AvatarGuid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PermissionId" Type="int" Nullable="false" />
+    <Property Name="PermissionGuid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Departments">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedByStaffId" Type="int" Nullable="true" />
+    <Property Name="CreatedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="ModifiedByStaffId" Type="int" Nullable="true" />
+    <Property Name="ModifiedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+  </EntityType>
+  <EntityType Name="JobTitles">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="true" />
+    <Property Name="CreatedByStaffId" Type="int" Nullable="true" />
+    <Property Name="CreatedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+    <Property Name="ModifiedByStaffId" Type="int" Nullable="true" />
+    <Property Name="ModifiedByStaffGuid" Type="uniqueidentifier" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Avatars">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AvatarContent" Type="varbinary(max)" Nullable="false" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Guid" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Guid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="AddProject" Type="bit" Nullable="false" />
+    <Property Name="ManageUsers" Type="bit" Nullable="false" />
+    <Property Name="GiveAccess" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="DepartmentStaff">
+    <End Role="Department" Type="CoreModel.Store.Departments" Multiplicity="1" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="DepartmentId" />
+        <PropertyRef Name="DepartmentGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JobTitle_Staff">
+    <End Role="JobTitle" Type="CoreModel.Store.JobTitles" Multiplicity="1" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JobTitle">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="JobTitleId" />
+        <PropertyRef Name="JobTitleGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Staff_CreatedByStaff">
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <End Role="Staff1" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff1">
+        <PropertyRef Name="CreatedByStaffId" />
+        <PropertyRef Name="CreatedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="StaffStaff">
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <End Role="Staff1" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff1">
+        <PropertyRef Name="ModifiedByStaffId" />
+        <PropertyRef Name="ModifiedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentStaff1">
+    <End Role="Department" Type="CoreModel.Store.Departments" Multiplicity="*" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CreatedByStaffId" />
+        <PropertyRef Name="CreatedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JobTitleStaff">
+    <End Role="JobTitle" Type="CoreModel.Store.JobTitles" Multiplicity="*" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="JobTitle">
+        <PropertyRef Name="CreatedByStaffId" />
+        <PropertyRef Name="CreatedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DepartmentStaff2">
+    <End Role="Department" Type="CoreModel.Store.Departments" Multiplicity="*" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="ModifiedByStaffId" />
+        <PropertyRef Name="ModifiedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="JobTitleStaff1">
+    <End Role="JobTitle" Type="CoreModel.Store.JobTitles" Multiplicity="*" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Staff">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="JobTitle">
+        <PropertyRef Name="ModifiedByStaffId" />
+        <PropertyRef Name="ModifiedByStaffGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AvatarStaff">
+    <End Role="Avatar" Type="CoreModel.Store.Avatars" Multiplicity="1" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avatar">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="AvatarId" />
+        <PropertyRef Name="AvatarGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PermissionStaff">
+    <End Role="Permission" Type="CoreModel.Store.Permissions" Multiplicity="1" />
+    <End Role="Staff" Type="CoreModel.Store.Staffs" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permission">
+        <PropertyRef Name="Id" />
+        <PropertyRef Name="Guid" />
+      </Principal>
+      <Dependent Role="Staff">
+        <PropertyRef Name="PermissionId" />
+        <PropertyRef Name="PermissionGuid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CoreModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="CoreModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Staffs" EntityType="CoreModel.Staff" />
+          <EntitySet Name="Departments" EntityType="CoreModel.Department" />
+          <AssociationSet Name="DepartmentStaff" Association="CoreModel.DepartmentStaff">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <EntitySet Name="JobTitles" EntityType="CoreModel.JobTitle" />
+          <AssociationSet Name="JobTitle_Staff" Association="CoreModel.JobTitle_Staff">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="Staff_CreatedByStaff" Association="CoreModel.Staff_CreatedByStaff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Staff1" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="StaffStaff" Association="CoreModel.StaffStaff">
+            <End Role="Staff" EntitySet="Staffs" />
+            <End Role="Staff1" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentStaff1" Association="CoreModel.DepartmentStaff1">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="JobTitleStaff" Association="CoreModel.JobTitleStaff">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="DepartmentStaff2" Association="CoreModel.DepartmentStaff2">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="JobTitleStaff1" Association="CoreModel.JobTitleStaff1">
+            <End Role="JobTitle" EntitySet="JobTitles" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <EntitySet Name="Avatars" EntityType="CoreModel.Avatar" />
+          <AssociationSet Name="AvatarStaff" Association="CoreModel.AvatarStaff">
+            <End Role="Avatar" EntitySet="Avatars" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <EntitySet Name="Permissions" EntityType="CoreModel.Permission" />
+          <AssociationSet Name="PermissionStaff" Association="CoreModel.PermissionStaff">
+            <End Role="Permission" EntitySet="Permissions" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" />
+          <Property Name="LastName" Type="String" Nullable="false" />
+          <Property Name="OfficePhone" Type="String" Nullable="false" />
+          <Property Name="CellPhone" Type="String" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Department" Relationship="CoreModel.DepartmentStaff" FromRole="Staff" ToRole="Department" />
+          <Property Name="DepartmentId" Type="Int32" Nullable="false" />
+          <Property Name="DepartmentGuid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="JobTitle" Relationship="CoreModel.JobTitle_Staff" FromRole="Staff" ToRole="JobTitle" />
+          <Property Name="JobTitleId" Type="Int32" Nullable="false" />
+          <Property Name="JobTitleGuid" Type="Guid" Nullable="false" />
+          <Property Name="LastLogin" Type="DateTime" Nullable="true" />
+          <Property Name="LastActive" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="CreatedByStaff" Relationship="CoreModel.Staff_CreatedByStaff" FromRole="Staff1" ToRole="Staff" />
+          <Property Name="CreatedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="CreatedByStaffGuid" Type="Guid" Nullable="true" />
+          <NavigationProperty Name="ModifiedByStaff" Relationship="CoreModel.StaffStaff" FromRole="Staff1" ToRole="Staff" />
+          <Property Name="ModifiedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="ModifiedByStaffGuid" Type="Guid" Nullable="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Avatar" Relationship="CoreModel.AvatarStaff" FromRole="Staff" ToRole="Avatar" />
+          <Property Name="AvatarId" Type="Int32" Nullable="false" />
+          <Property Name="AvatarGuid" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Permission" Relationship="CoreModel.PermissionStaff" FromRole="Staff" ToRole="Permission" />
+          <Property Name="PermissionId" Type="Int32" Nullable="false" />
+          <Property Name="PermissionGuid" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="CoreModel.DepartmentStaff" FromRole="Department" ToRole="Staff" />
+          <NavigationProperty Name="CreatedByStaff" Relationship="CoreModel.DepartmentStaff1" FromRole="Department" ToRole="Staff" />
+          <Property Name="CreatedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="CreatedByStaffGuid" Type="Guid" Nullable="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="ModifiedByStaff" Relationship="CoreModel.DepartmentStaff2" FromRole="Department" ToRole="Staff" />
+          <Property Name="ModifiedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="ModifiedByStaffGuid" Type="Guid" Nullable="true" />
+        </EntityType>
+        <Association Name="DepartmentStaff">
+          <End Type="CoreModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="DepartmentId" />
+              <PropertyRef Name="DepartmentGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="JobTitle">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="CoreModel.JobTitle_Staff" FromRole="JobTitle" ToRole="Staff" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="CreatedByStaff" Relationship="CoreModel.JobTitleStaff" FromRole="JobTitle" ToRole="Staff" />
+          <Property Name="CreatedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="CreatedByStaffGuid" Type="Guid" Nullable="true" />
+          <NavigationProperty Name="ModifiedByStaff" Relationship="CoreModel.JobTitleStaff1" FromRole="JobTitle" ToRole="Staff" />
+          <Property Name="ModifiedByStaffId" Type="Int32" Nullable="true" />
+          <Property Name="ModifiedByStaffGuid" Type="Guid" Nullable="true" />
+        </EntityType>
+        <Association Name="JobTitle_Staff">
+          <End Type="CoreModel.JobTitle" Role="JobTitle" Multiplicity="1" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JobTitle">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="JobTitleId" />
+              <PropertyRef Name="JobTitleGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Staff_CreatedByStaff">
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="CoreModel.Staff" Role="Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="CreatedByStaffId" />
+              <PropertyRef Name="CreatedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="StaffStaff">
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <End Type="CoreModel.Staff" Role="Staff1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff1">
+              <PropertyRef Name="ModifiedByStaffId" />
+              <PropertyRef Name="ModifiedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DepartmentStaff1">
+          <End Type="CoreModel.Department" Role="Department" Multiplicity="*" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="CreatedByStaffId" />
+              <PropertyRef Name="CreatedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobTitleStaff">
+          <End Type="CoreModel.JobTitle" Role="JobTitle" Multiplicity="*" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="JobTitle">
+              <PropertyRef Name="CreatedByStaffId" />
+              <PropertyRef Name="CreatedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DepartmentStaff2">
+          <End Type="CoreModel.Department" Role="Department" Multiplicity="*" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Department">
+              <PropertyRef Name="ModifiedByStaffId" />
+              <PropertyRef Name="ModifiedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="JobTitleStaff1">
+          <End Type="CoreModel.JobTitle" Role="JobTitle" Multiplicity="*" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Staff">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="JobTitle">
+              <PropertyRef Name="ModifiedByStaffId" />
+              <PropertyRef Name="ModifiedByStaffGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Avatar">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="AvatarContent" Type="Binary" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Nullable="true" />
+          <NavigationProperty Name="Staffs" Relationship="CoreModel.AvatarStaff" FromRole="Avatar" ToRole="Staff" />
+        </EntityType>
+        <Association Name="AvatarStaff">
+          <End Type="CoreModel.Avatar" Role="Avatar" Multiplicity="1" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Avatar">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="AvatarId" />
+              <PropertyRef Name="AvatarGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Guid" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Guid" Type="Guid" Nullable="false" />
+          <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+          <Property Name="AddProject" Type="Boolean" Nullable="false" />
+          <Property Name="ManageUsers" Type="Boolean" Nullable="false" />
+          <Property Name="GiveAccess" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Staffs" Relationship="CoreModel.PermissionStaff" FromRole="Permission" ToRole="Staff" />
+        </EntityType>
+        <Association Name="PermissionStaff">
+          <End Type="CoreModel.Permission" Role="Permission" Multiplicity="1" />
+          <End Type="CoreModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permission">
+              <PropertyRef Name="Id" />
+              <PropertyRef Name="Guid" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="PermissionId" />
+              <PropertyRef Name="PermissionGuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CoreModelStoreContainer" CdmEntityContainer="CoreModelContainer">
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="IsTypeOf(CoreModel.Staff)">
+        <MappingFragment StoreEntitySet="Staffs">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="OfficePhone" ColumnName="OfficePhone" />
+          <ScalarProperty Name="CellPhone" ColumnName="CellPhone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="DepartmentGuid" ColumnName="DepartmentGuid" />
+          <ScalarProperty Name="JobTitleId" ColumnName="JobTitleId" />
+          <ScalarProperty Name="JobTitleGuid" ColumnName="JobTitleGuid" />
+          <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+          <ScalarProperty Name="LastActive" ColumnName="LastActive" />
+          <ScalarProperty Name="CreatedByStaffId" ColumnName="CreatedByStaffId" />
+          <ScalarProperty Name="CreatedByStaffGuid" ColumnName="CreatedByStaffGuid" />
+          <ScalarProperty Name="ModifiedByStaffId" ColumnName="ModifiedByStaffId" />
+          <ScalarProperty Name="ModifiedByStaffGuid" ColumnName="ModifiedByStaffGuid" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="AvatarId" ColumnName="AvatarId" />
+          <ScalarProperty Name="AvatarGuid" ColumnName="AvatarGuid" />
+          <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+          <ScalarProperty Name="PermissionGuid" ColumnName="PermissionGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="IsTypeOf(CoreModel.Department)">
+        <MappingFragment StoreEntitySet="Departments">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedByStaffId" ColumnName="CreatedByStaffId" />
+          <ScalarProperty Name="CreatedByStaffGuid" ColumnName="CreatedByStaffGuid" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="ModifiedByStaffId" ColumnName="ModifiedByStaffId" />
+          <ScalarProperty Name="ModifiedByStaffGuid" ColumnName="ModifiedByStaffGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="JobTitles">
+      <EntityTypeMapping TypeName="IsTypeOf(CoreModel.JobTitle)">
+        <MappingFragment StoreEntitySet="JobTitles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="CreatedByStaffId" ColumnName="CreatedByStaffId" />
+          <ScalarProperty Name="CreatedByStaffGuid" ColumnName="CreatedByStaffGuid" />
+          <ScalarProperty Name="ModifiedByStaffId" ColumnName="ModifiedByStaffId" />
+          <ScalarProperty Name="ModifiedByStaffGuid" ColumnName="ModifiedByStaffGuid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Avatars">
+      <EntityTypeMapping TypeName="IsTypeOf(CoreModel.Avatar)">
+        <MappingFragment StoreEntitySet="Avatars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="AvatarContent" ColumnName="AvatarContent" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="IsTypeOf(CoreModel.Permission)">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="AddProject" ColumnName="AddProject" />
+          <ScalarProperty Name="ManageUsers" ColumnName="ManageUsers" />
+          <ScalarProperty Name="GiveAccess" ColumnName="GiveAccess" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
